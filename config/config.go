@@ -49,7 +49,7 @@ func InitConfig() {
 	pflag.Parse()
 	viper.RegisterAlias("c", "config")
 	viper.RegisterAlias("v", "version")
-	viper.SetDefault("config", "/etc/headscale-panel/config.yaml")
+	viper.SetDefault("config", "/etc/headscale/panel-config.yaml")
 
 	viper.SetEnvPrefix("HEADSCALE_PANEL")
 	if err := viper.BindEnv("config"); err != nil {
