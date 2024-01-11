@@ -3,6 +3,7 @@ LABEL authors="QianheYu"
 
 WORKDIR /src
 COPY . .
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk update && apk add --no-cache make git
 
@@ -11,6 +12,7 @@ RUN make build
 FROM docker.io/alpine:latest
 LABEL authors="QianheYu"
 LABEL all-in-one=true
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk update && apk add --no-cache ca-certificates && update-ca-certificates
 
