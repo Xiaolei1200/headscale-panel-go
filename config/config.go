@@ -115,13 +115,14 @@ func InitConfig() {
 		panic(fmt.Errorf("Failed to initialise profile:%s \n", err))
 	}
 	// Read a pair of rsa keys
+	// fmt.Printf("读取到的RSA路径" + Conf.System.RSAPublicKey)
 	Conf.System.PublicKey, err = util.LoadPublicKey(Conf.System.RSAPublicKey)
 	if err != nil {
-		panic(fmt.Errorf("init config file failed: load public key err:%s \n", err))
+		panic(fmt.Errorf("读取到的RSA路径"+Conf.System.RSAPublicKey+"init config file failed: load public key err:%s \n", err))
 	}
 	Conf.System.PrivateKey, err = util.LoadPrivateKey(Conf.System.RSAPrivateKey, Conf.System.KeyDecryptionPwd)
 	if err != nil {
-		panic(fmt.Errorf("init config file failed: load private key err:%s \n", err))
+		panic(fmt.Errorf("读取到的RSA路径"+Conf.System.RSAPublicKey+"config file failed: load private key err:%s \n", err))
 	}
 
 	if len(Conf.System.KeyDecryptionPwd) <= 0 {
